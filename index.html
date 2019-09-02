@@ -1,0 +1,159 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas Engraving</title>
+</head>
+<body>
+
+<style>
+    img {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    #replace_node {
+        max-width: 650px;
+        max-height: 650px;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #dddddd;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    #replace_node_2{
+        max-width: 1500px;
+        max-height: 1500px;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #dddddd;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    #replace_node > *:not(:first-child),#replace_node_2 > *:not(:first-child){
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .fonts {
+        margin-top: 30px;
+    }
+
+    .fonts > .radio_group {
+        margin-bottom: 5px;
+    }
+
+    .controls-col {
+        border: 1px solid #dddddd;
+        width: 300px;
+        display: inline-block;
+        padding: 15px;
+    }
+</style>
+
+<div id="replace_node">
+    <img src="https://j4z2x5e8.stackpathcdn.com/zbuilder/ring/RCR21/HR1+W+SNS+SL3+BG1+V1.png" style="z-index: 0;">
+    <img src="https://j4z2x5e8.stackpathcdn.com/zbuilder/ring/RCR21/HH1+W+SP1+DMND+RD+E+BG1+V1.png"
+         style="z-index: 6;">
+    <img src="https://j4z2x5e8.stackpathcdn.com/zbuilder/ring/RCR21/STB+W+SNS+SL3+ALL+V1.png" alt="">
+</div>
+
+<div class="controls-col">
+    <h3>Shank</h3>
+    <input type="text" id="eng_text" placeholder="Enter Your Text">
+    <div class="fonts">
+        <div class="radio_group">
+            <input type="radio" class="eng_font_style" name="font_style" value="Satisfy" id="font_style_1">
+            <label for="font_style_1">Satisfy</label>
+        </div>
+        <div class="radio_group">
+            <input type="radio" class="eng_font_style" name="font_style" value="Charm" id="font_style_3">
+            <label for="font_style_3">Charm</label>
+        </div>
+        <div class="radio_group">
+            <input type="radio" class="eng_font_style" name="font_style" value="Handlee" id="font_style_2">
+            <label for="font_style_2">Handlee</label>
+        </div>
+    </div>
+</div>
+
+<div class="controls-col">
+    <h3>Band</h3>
+    <input type="text" id="eng_text_2" placeholder="Enter Your Text">
+    <div class="fonts">
+        <div class="radio_group">
+            <input type="radio" class="eng_font_style_2" name="font_style_2" value="Satisfy" id="font_style_4">
+            <label for="font_style_4">Satisfy</label>
+        </div>
+        <div class="radio_group">
+            <input type="radio" class="eng_font_style_2" name="font_style_2" value="Charm" id="font_style_5">
+            <label for="font_style_5">Charm</label>
+        </div>
+        <div class="radio_group">
+            <input type="radio" class="eng_font_style_2" name="font_style_2" value="Handlee" id="font_style_6">
+            <label for="font_style_6">Handlee</label>
+        </div>
+    </div>
+</div>
+
+
+<h3>Large view</h3>
+<div class="large-view" id="replace_node_2">
+    <img src="https://j4z2x5e8.stackpathcdn.com/zbuilder/ring/RCR21/HR1+W+SNS+SL3+BG1+V1+X2.png" style="z-index: 0;">
+    <img src="https://j4z2x5e8.stackpathcdn.com/zbuilder/ring/RCR21/HH1+W+SP1+DMND+RD+E+BG1+V1+X2.png"
+         style="z-index: 6;">
+    <img src="https://j4z2x5e8.stackpathcdn.com/zbuilder/ring/RCR21/STB+W+SNS+SL3+ALL+V1+X2.png" alt="">
+</div>
+
+<script src="canvas-engraving.js"></script>
+<script>
+    const paramsObj = {
+        'smallReplaceElement': '#replace_node',
+        'largeReplaceElement': '#replace_node_2',
+        'inputElement': '#eng_text',
+        'radioElements': '.eng_font_style',
+        'minChar': 2,
+        'maxChar': 25,
+        'fonts': ['Handlee', 'Satisfy', 'Charm'],
+        'radius': -500,
+        'angle': 0.6,
+        'posX': 325,
+        'posY': -18,
+        'skewX': 0,
+        'skewY': 0
+    };
+    const paramsObj2 = {
+        'smallReplaceElement': '#replace_node',
+        'largeReplaceElement': '#replace_node_2',
+        'inputElement': '#eng_text_2',
+        'radioElements': '.eng_font_style_2',
+        'minChar': 2,
+        'maxChar': 25,
+        'fonts': ['Handlee', 'Satisfy', 'Charm'],
+        'radius': -560,
+        'angle': 0.56,
+        'posX': 325,
+        'posY': -40,
+        'skewX': 0,
+        'skewY': 0
+    };
+    const ce_1 = Object.create(canvasEngraving);
+    const ce_2 = Object.create(canvasEngraving);
+    ce_1.params = paramsObj;
+    ce_1.init();
+    ce_2.params = paramsObj2;
+    ce_2.init();
+</script>
+
+
+</body>
+</html>
